@@ -7,19 +7,41 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var recordProgress: UIProgressView!
+    fileprivate let recoder = ZFAudioRecoder()
+
+   
+    @IBOutlet weak var backmusicLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 
+
+}
+// MARK: - 事件响应
+extension ViewController {
+  
+    @IBAction func touchDownRecord(_ sender: UIButton) {
+        recoder.startRecoder(0)
+    }
+    @IBAction func touchUpRecord(_ sender: UIButton) {
+        recoder.endRecoder()
+    }
+    @IBAction func playClick(_ sender: UIButton) {
+        recoder.playCurrentRecoder()
+    }
+    @IBAction func revocationClick(_ sender: UIButton) {
+        recoder.deleteLastRecord()
+    }
+    @IBAction func addBackMusic(_ sender: UIButton) {
+        navigationController?.pushViewController(SelectBackMusicVC(), animated: true)
+    }
+    
 }
 

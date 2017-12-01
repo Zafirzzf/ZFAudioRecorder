@@ -7,14 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180DE30E1FCE416E0041FC51 /* ZFAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180DE30D1FCE416E0041FC51 /* ZFAudioPlayer.swift */; };
+		18157E4D1FD0EA3300B5C6F6 /* SelectMusicTimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18157E4C1FD0EA3300B5C6F6 /* SelectMusicTimeLabel.swift */; };
 		181A0A671FCD589600B12689 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181A0A661FCD589600B12689 /* AppDelegate.swift */; };
 		181A0A691FCD589600B12689 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181A0A681FCD589600B12689 /* ViewController.swift */; };
 		181A0A6C1FCD589600B12689 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 181A0A6A1FCD589600B12689 /* Main.storyboard */; };
 		181A0A6E1FCD589600B12689 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 181A0A6D1FCD589600B12689 /* Assets.xcassets */; };
 		181A0A711FCD589600B12689 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 181A0A6F1FCD589600B12689 /* LaunchScreen.storyboard */; };
+		181A0A7A1FCD591D00B12689 /* ZFAudioRecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181A0A791FCD591D00B12689 /* ZFAudioRecoder.swift */; };
+		181A0A7C1FCD5A2900B12689 /* ZFAudioFileTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181A0A7B1FCD5A2900B12689 /* ZFAudioFileTool.swift */; };
+		18531BEB1FCFAC5C00DBD4CC /* SelectBackMusicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18531BEA1FCFAC5C00DBD4CC /* SelectBackMusicVC.swift */; };
+		18531BED1FCFD62E00DBD4CC /* SelectMusicRangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18531BEC1FCFD62E00DBD4CC /* SelectMusicRangeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		180DE30D1FCE416E0041FC51 /* ZFAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZFAudioPlayer.swift; sourceTree = "<group>"; };
+		18157E4C1FD0EA3300B5C6F6 /* SelectMusicTimeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicTimeLabel.swift; sourceTree = "<group>"; };
 		181A0A631FCD589600B12689 /* ZFAudioRecoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZFAudioRecoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		181A0A661FCD589600B12689 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		181A0A681FCD589600B12689 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +30,10 @@
 		181A0A6D1FCD589600B12689 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		181A0A701FCD589600B12689 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		181A0A721FCD589600B12689 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		181A0A791FCD591D00B12689 /* ZFAudioRecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZFAudioRecoder.swift; sourceTree = "<group>"; };
+		181A0A7B1FCD5A2900B12689 /* ZFAudioFileTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZFAudioFileTool.swift; sourceTree = "<group>"; };
+		18531BEA1FCFAC5C00DBD4CC /* SelectBackMusicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBackMusicVC.swift; sourceTree = "<group>"; };
+		18531BEC1FCFD62E00DBD4CC /* SelectMusicRangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicRangeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +66,60 @@
 		181A0A651FCD589600B12689 /* ZFAudioRecoder */ = {
 			isa = PBXGroup;
 			children = (
-				181A0A661FCD589600B12689 /* AppDelegate.swift */,
+				181A0A781FCD58AB00B12689 /* ZFAudioRecoder */,
+				18531BE61FCFABD200DBD4CC /* BackMusic */,
 				181A0A681FCD589600B12689 /* ViewController.swift */,
+				181A0A661FCD589600B12689 /* AppDelegate.swift */,
 				181A0A6A1FCD589600B12689 /* Main.storyboard */,
 				181A0A6D1FCD589600B12689 /* Assets.xcassets */,
 				181A0A6F1FCD589600B12689 /* LaunchScreen.storyboard */,
 				181A0A721FCD589600B12689 /* Info.plist */,
 			);
 			path = ZFAudioRecoder;
+			sourceTree = "<group>";
+		};
+		181A0A781FCD58AB00B12689 /* ZFAudioRecoder */ = {
+			isa = PBXGroup;
+			children = (
+				181A0A791FCD591D00B12689 /* ZFAudioRecoder.swift */,
+				181A0A7B1FCD5A2900B12689 /* ZFAudioFileTool.swift */,
+				180DE30D1FCE416E0041FC51 /* ZFAudioPlayer.swift */,
+			);
+			path = ZFAudioRecoder;
+			sourceTree = "<group>";
+		};
+		18531BE61FCFABD200DBD4CC /* BackMusic */ = {
+			isa = PBXGroup;
+			children = (
+				18531BE71FCFABD200DBD4CC /* Controller */,
+				18531BE81FCFABD200DBD4CC /* Model */,
+				18531BE91FCFABD200DBD4CC /* View */,
+			);
+			path = BackMusic;
+			sourceTree = "<group>";
+		};
+		18531BE71FCFABD200DBD4CC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				18531BEA1FCFAC5C00DBD4CC /* SelectBackMusicVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		18531BE81FCFABD200DBD4CC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		18531BE91FCFABD200DBD4CC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18531BEC1FCFD62E00DBD4CC /* SelectMusicRangeView.swift */,
+				18157E4C1FD0EA3300B5C6F6 /* SelectMusicTimeLabel.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,8 +194,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				181A0A7C1FCD5A2900B12689 /* ZFAudioFileTool.swift in Sources */,
+				18531BED1FCFD62E00DBD4CC /* SelectMusicRangeView.swift in Sources */,
+				180DE30E1FCE416E0041FC51 /* ZFAudioPlayer.swift in Sources */,
 				181A0A691FCD589600B12689 /* ViewController.swift in Sources */,
+				18531BEB1FCFAC5C00DBD4CC /* SelectBackMusicVC.swift in Sources */,
+				18157E4D1FD0EA3300B5C6F6 /* SelectMusicTimeLabel.swift in Sources */,
 				181A0A671FCD589600B12689 /* AppDelegate.swift in Sources */,
+				181A0A7A1FCD591D00B12689 /* ZFAudioRecoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
