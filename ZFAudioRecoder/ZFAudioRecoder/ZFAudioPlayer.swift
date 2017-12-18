@@ -10,24 +10,26 @@ import UIKit
 import AVFoundation
 class ZFAudioPlayer {
     
-    fileprivate var player = AVAudioPlayer()
+     var player: AVAudioPlayer?
     
     
     /// 是否正在播放
     var isPlaying: Bool {
         get {
-            return player.isPlaying
+            return player?.isPlaying ?? false
         }
     }
     /// 播放进度
     var progress: CGFloat  {
         get {
+            guard let player = player else {return 0}
             return CGFloat(player.currentTime / player.duration)
         }
     }
     /// 播放总时长
     var duration: CGFloat {
         get {
+            guard let player = player else {return 0}
             return CGFloat(player.duration)
         }
     }
@@ -36,15 +38,29 @@ class ZFAudioPlayer {
 // MARK: - 对外提供方法
 extension ZFAudioPlayer {
     func playLocalAudio(_ url: URL) {
-        
-        player = try!AVAudioPlayer(contentsOf: url)
+        guard let player = try?AVAudioPlayer(contentsOf: url) else {return}
+        self.player = player
         player.play()
     }
+    
     func pausePlay() {
+        guard let player = player else {return}
         player.pause()
     }
+    
+    func playToTimeOffset(_ timeOffset: CGFloat) {
+        guard let player = player else {return}
+        player.currentTime = TimeInterval(timeOffset)
+        player.play()
+    }
     func playToProgress(_ progress: CGFloat) {
+        guard let player = player else {return}
         player.currentTime = player.duration * TimeInterval(progress)
         player.play()
+    }
+
+    func stopPlay() {
+        guard let player = player else {return}
+        player.stop()
     }
 }
