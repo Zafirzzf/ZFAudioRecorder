@@ -25,7 +25,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ybz-Ed-Xpr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1954" y="-115"/>
+            <point key="canvasLocation" x="-2276" y="-125"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -79,8 +79,8 @@
                                 <color key="textColor" red="1" green="0.59026227679999999" blue="0.47818080359999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OMB-ae-2ha">
-                                <rect key="frame" x="16" y="83" width="343" height="238"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OMB-ae-2ha" customClass="AudioShowVolumeView" customModule="ZFAudioRecoder" customModuleProvider="target">
+                                <rect key="frame" x="16" y="152" width="343" height="169"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.35686274509999999" green="0.90620459119999996" blue="0.59247964809999998" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -100,9 +100,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qk-Pt-WrX">
+                                <rect key="frame" x="167.5" y="84" width="39.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="4qk-Pt-WrX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Act-at-BD9"/>
+                            <constraint firstItem="4qk-Pt-WrX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IrY-Tf-I9h"/>
                             <constraint firstItem="Xgd-bh-flq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="Kxe-cU-uWn"/>
                             <constraint firstItem="Xgd-bh-flq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Yni-wk-Lew"/>
                             <constraint firstItem="Xgd-bh-flq" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="vJ8-Xy-IaL"/>
@@ -113,11 +121,13 @@
                     <connections>
                         <outlet property="backmusicLabel" destination="7UQ-eg-azY" id="fj3-3k-mSB"/>
                         <outlet property="recordProgress" destination="Xgd-bh-flq" id="PRD-0r-2f8"/>
+                        <outlet property="recorderTimeLabel" destination="4qk-Pt-WrX" id="qcb-S0-Xe5"/>
+                        <outlet property="volumeView" destination="OMB-ae-2ha" id="g6c-ip-UAU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1178" y="-125"/>
+            <point key="canvasLocation" x="-1577" y="-134"/>
         </scene>
     </scenes>
 </document>

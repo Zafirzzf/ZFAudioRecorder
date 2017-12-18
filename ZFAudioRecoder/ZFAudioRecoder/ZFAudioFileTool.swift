@@ -55,7 +55,15 @@ extension ZFAudioFileTool {
         try?FileManager.default.removeItem(atPath: tempRecoderPath + "/combine\(recoderCount).m4a")
         
     }
+    
     /// 剪辑一段视频
+    ///
+    /// - Parameters:
+    ///   - audioPath: 音频源的路径
+    ///   - fromTime: 截取的起始时间
+    ///   - toTime: 截取到哪个时间点
+    ///   - outputPath: 剪辑完新音频的路径
+    ///   - completed: 结束的回调block
     class func cutAudio(_ audioPath: String, fromTime: CGFloat, toTime: CGFloat, outputPath: String, completed:@escaping () -> ()) {
         let asset = AVURLAsset(url: URL(fileURLWithPath: audioPath))
         let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetAppleM4A)!
@@ -99,8 +107,8 @@ extension ZFAudioFileTool {
             insertTime = insertTime + asset.duration
         }
         // 从录音轨道中生成一个混音素材,添加到数组中.
-        let trackMix = AVMutableAudioMixInputParameters(track: recordMutableTrack)
-        mixParams.append(trackMix)
+        let recorderMix = AVMutableAudioMixInputParameters(track: recordMutableTrack)
+        mixParams.append(recorderMix)
         
         // 插入背景音乐
         if let backMusicPath = backMusicPath {
@@ -137,8 +145,6 @@ extension ZFAudioFileTool {
 }
 // MARK: - 方法抽取
 extension ZFAudioFileTool {
-    
-    
     
     // 将某一段加到另一段的后面
     fileprivate func combineAudio(fromUrl: URL, toUrl: URL, outputPath: String, completed: @escaping () -> ()) {

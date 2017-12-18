@@ -19,10 +19,9 @@ class ZFAudioRecorder {
     }
     
     
-    fileprivate lazy var player = ZFAudioPlayer()
     fileprivate lazy var fileTool = ZFAudioFileTool()
     /// 存放多段录音器的数组
-    fileprivate lazy var recorders = [AVAudioRecorder]()
+     lazy var recorders = [AVAudioRecorder]()
     
     fileprivate var recordSettings:[String: Any] = {
         // 2. 设置录音参数
@@ -53,9 +52,8 @@ extension ZFAudioRecorder {
         recorder.isMeteringEnabled = true
         recorders.append(recorder)
         recorders.last!.record()
-        
-        
     }
+    
     /// 暂停录音
     func pauseRecoder() {
         recorders.last!.pause()
@@ -70,6 +68,7 @@ extension ZFAudioRecorder {
     
     /// 删除最后一段录音
     func deleteLastRecord() {
+        guard recordersDuration.count > 0 else {return}
         recordersDuration.removeLast()
         fileTool.deletePreviousAudio(recorders)
         recorders.removeLast()
@@ -81,23 +80,23 @@ extension ZFAudioRecorder {
         ZFAudioFileTool.cleanTempdirection()
     }
     /// 合成并播放录音
-    func playCurrentRecoder(_ backMusicPath: String?) {
-        guard recorders.count > 0 else {return}
+    func createAudio(_ backMusicPath: String?, _ completion: @escaping ((_ outputUrl: URL?) -> ())) {
+        guard recorders.count > 0 else { completion(nil);  return}
         
         if recorders.count == 1 && backMusicPath == nil{
-            self.player.playLocalAudio(recorders.first!.url)
+            completion(recorders.first!.url)
         }else {
             let outputPath = fileTool.combineRecorderPath(recorders.count)
             if FileManager.default.fileExists(atPath: outputPath) {
-                self.player.playLocalAudio(URL(fileURLWithPath: outputPath))
+                 completion(URL(fileURLWithPath: outputPath))
             }else {
                 fileTool.combineAllRecorder(recorders, backMusicPath, completed: {
-                    self.player.playLocalAudio(URL(fileURLWithPath: outputPath))
+                    completion(URL(fileURLWithPath: outputPath))
                 })
             }
         }
-        
     }
+
     
     func getCurrentTimeVolume() -> CGFloat {
         guard recorders.count > 0 else {return 0}

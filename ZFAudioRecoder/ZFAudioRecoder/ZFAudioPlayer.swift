@@ -8,10 +8,13 @@
 
 import UIKit
 import AVFoundation
-class ZFAudioPlayer {
+@objc  protocol ZFAudioPlayerDelegate {
+   @objc optional func audioplayerDidFinished(_ player: ZFAudioPlayer,  success: Bool)
+}
+class ZFAudioPlayer: NSObject {
     
      var player: AVAudioPlayer?
-    
+     var delegate: ZFAudioPlayerDelegate?
     
     /// 是否正在播放
     var isPlaying: Bool {
@@ -33,6 +36,10 @@ class ZFAudioPlayer {
             return CGFloat(player.duration)
         }
     }
+    convenience init(delegate: ZFAudioPlayerDelegate) {
+        self.init()
+        self.delegate = delegate
+    }
 }
 
 // MARK: - 对外提供方法
@@ -40,6 +47,7 @@ extension ZFAudioPlayer {
     func playLocalAudio(_ url: URL) {
         guard let player = try?AVAudioPlayer(contentsOf: url) else {return}
         self.player = player
+        player.delegate = self
         player.play()
     }
     
@@ -63,4 +71,12 @@ extension ZFAudioPlayer {
         guard let player = player else {return}
         player.stop()
     }
+}
+
+extension ZFAudioPlayer: AVAudioPlayerDelegate {
+
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        self.delegate?.audioplayerDidFinished!(self, success: flag)
+    }
+    
 }
